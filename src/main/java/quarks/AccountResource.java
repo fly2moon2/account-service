@@ -5,10 +5,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 //import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 import java.util.*;
 import java.math.BigDecimal;
@@ -64,30 +67,29 @@ public class AccountResource {
     return response;
   }
 
-  /* @Provider
-  public static class ErrorMapper implements ExceptionMapper<Exception>
-  {
+  @Provider
+  public static class ErrorMapper implements ExceptionMapper<Exception> {
 
     @Override
     public Response toResponse(Exception exception) {
 
-    int code = 500;
-    if (exception instanceof WebApplicationException) {
-    code = ((WebApplicationException) exception).getResponse().getStatus();
-    }
+      int code = 500;
+      if (exception instanceof WebApplicationException) {
+        code = ((WebApplicationException) exception).getResponse().getStatus();
+      }
 
-    JsonObjectBuilder entityBuilder = Json.createObjectBuilder()
-        .add("exceptionType", exception.getClass().getName())
-        .add("code", code);
+      JsonObjectBuilder entityBuilder = Json.createObjectBuilder()
+          .add("exceptionType", exception.getClass().getName())
+          .add("code", code);
 
       if (exception.getMessage() != null) {
-      entityBuilder.add("error", exception.getMessage());
-    }
+        entityBuilder.add("error", exception.getMessage());
+      }
 
-    return Response.status(code)
-        .entity(entityBuilder.build())
-        .build();
+      return Response.status(code)
+          .entity(entityBuilder.build())
+          .build();
     }
-  } */
+  }
   
 }

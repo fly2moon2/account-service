@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../ruspaces/wasm-game-of-life"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
